@@ -5,7 +5,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.lepsistemas.springbootjwt.domain.User;
-import br.com.lepsistemas.springbootjwt.domain.User.UserBuilder;
 import br.com.lepsistemas.springbootjwt.repository.UserRepository;
 
 @Service
@@ -18,7 +17,7 @@ public class InitialLoadService {
 	private UserRepository userRepository;
 	
 	public void initialLoadDatabase() {
-		User user = new UserBuilder().username("root").password(crypt.encode("root")).build();
+		User user = User.builder().username("root").password(crypt.encode("root")).build();
 		userRepository.save(user);
 	}
 
