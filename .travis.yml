@@ -3,3 +3,6 @@ jdk:
   - oraclejdk8
 
 script: mvn clean verify
+
+after_success:
+  - mvn clean cobertura:cobertura coveralls:report
